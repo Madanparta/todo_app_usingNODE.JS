@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>TODO Application</title>
+</head>
+<body>
+    <div class="header">
+        <header>Todo Application</header>
+    </div>
+    <div class="container_body">
+        <form action="/todo/add" method="post">
+            <div>
+                <input type="text" name="name">
+                <button type="submit">Add</button>
+            </div>
+        </form>
+    </div>
+    <div class="output_container">
+        <% todo.forEach(todos=>{%>
+            <div class="element_container">
+                <%if(!todos.name == ""){%>
+                    <% if(todos.status){%>
+                        <p class="pc">
+                            <%= todos.name%>
+                            <a class="c not_allow" href="/todo/<%=todos._id%>/comp">comp</a>
+                        </p>
+                    <%}else{%>
+                        <p>
+                            <%= todos.name%>
+                            <a class="c" href="/todo/<%=todos._id%>/comp">comp</a>
+                        </p>
+                   <% } %>
+                    <a class="d" href="/todo/<%=todos._id%>/dlt">dlt</a>
+                <%}%>
+                
+            </div>
+        <%})%>
+    </div>
+</body>
+</html>
